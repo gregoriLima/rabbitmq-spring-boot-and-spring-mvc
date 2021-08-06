@@ -1,4 +1,4 @@
-package com.activemq.assets.exchange.fanout;
+package com.rabbitmq.assets.exchange.fanout;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;

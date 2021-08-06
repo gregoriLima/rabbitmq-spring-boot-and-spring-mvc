@@ -1,4 +1,4 @@
-package com.activemq.assets.queue;
+package com.rabbitmq.assets.queue;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
