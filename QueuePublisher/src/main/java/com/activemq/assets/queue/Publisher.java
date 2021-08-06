@@ -1,4 +1,4 @@
-package com.activemq.assets;
+package com.activemq.assets.queue;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -15,7 +15,7 @@ public class Publisher {
 		Connection connection = factory.newConnection();
 		Channel channel = connection.createChannel();
 		
-		String message = "Message from RabbitMQ 123";
+		String message = "Message from RabbitMQ";
 		
 		// publishing in the queue (exchange, queue, properties, message)
 		channel.basicPublish("", "Queue-1", null, message.getBytes());

@@ -1,4 +1,4 @@
-package com.activemq.assets;
+package com.activemq.assets.queue;
 
 import java.io.IOException;
 import java.util.concurrent.TimeoutException;
@@ -13,7 +13,7 @@ import netscape.javascript.JSObject;
 
 public class PublisherJson {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException, TimeoutException {
 		
 		ConnectionFactory factory = new ConnectionFactory();
 		
@@ -30,10 +30,7 @@ public class PublisherJson {
 			// publishing in the queue (exchange, queue, properties, message)
 			channel.basicPublish("", "Queue-1", null, json.toString().getBytes());
 			
-		} catch (IOException | TimeoutException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		} 
 		
 		
 	}
