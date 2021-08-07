@@ -1,0 +1,218 @@
+{
+  "rabbit_version": "3.9.1",
+  "rabbitmq_version": "3.9.1",
+  "product_name": "RabbitMQ",
+  "product_version": "3.9.1",
+  "users": [
+    {
+      "name": "guest",
+      "password_hash": "l2SEOeQ9wmLW+HExshdor67cGRYzMjJ4sG4UzS7Kic3MeeL4",
+      "hashing_algorithm": "rabbit_password_hashing_sha256",
+      "tags": [
+        "administrator"
+      ],
+      "limits": {}
+    }
+  ],
+  "vhosts": [
+    {
+      "name": "/"
+    }
+  ],
+  "permissions": [
+    {
+      "user": "guest",
+      "vhost": "/",
+      "configure": ".*",
+      "write": ".*",
+      "read": ".*"
+    }
+  ],
+  "topic_permissions": [],
+  "parameters": [],
+  "global_parameters": [
+    {
+      "name": "internal_cluster_id",
+      "value": "rabbitmq-cluster-id-pZ_7jUTMizZgtGyu0czxoQ"
+    }
+  ],
+  "policies": [],
+  "queues": [
+    {
+      "name": "AC",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "classic"
+      }
+    },
+    {
+      "name": "Mobile",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "classic"
+      }
+    },
+    {
+      "name": "Queue-1",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "classic"
+      }
+    },
+    {
+      "name": "TV",
+      "vhost": "/",
+      "durable": true,
+      "auto_delete": false,
+      "arguments": {
+        "x-queue-type": "classic"
+      }
+    }
+  ],
+  "exchanges": [
+    {
+      "name": "Direct-Exchange",
+      "vhost": "/",
+      "type": "direct",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "Topic-Exchange",
+      "vhost": "/",
+      "type": "topic",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "Headers-Exchange",
+      "vhost": "/",
+      "type": "headers",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    },
+    {
+      "name": "Fanout-Exchange",
+      "vhost": "/",
+      "type": "fanout",
+      "durable": true,
+      "auto_delete": false,
+      "internal": false,
+      "arguments": {}
+    }
+  ],
+  "bindings": [
+    {
+      "source": "Direct-Exchange",
+      "vhost": "/",
+      "destination": "AC",
+      "destination_type": "queue",
+      "routing_key": "ac",
+      "arguments": {}
+    },
+    {
+      "source": "Direct-Exchange",
+      "vhost": "/",
+      "destination": "Mobile",
+      "destination_type": "queue",
+      "routing_key": "mobile",
+      "arguments": {}
+    },
+    {
+      "source": "Direct-Exchange",
+      "vhost": "/",
+      "destination": "TV",
+      "destination_type": "queue",
+      "routing_key": "tv",
+      "arguments": {}
+    },
+    {
+      "source": "Fanout-Exchange",
+      "vhost": "/",
+      "destination": "AC",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "Fanout-Exchange",
+      "vhost": "/",
+      "destination": "Mobile",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {}
+    },
+    {
+      "source": "Headers-Exchange",
+      "vhost": "/",
+      "destination": "AC",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {
+        "item1": "mobile",
+        "item2": "ac",
+        "x-match": "all"
+      }
+    },
+    {
+      "source": "Headers-Exchange",
+      "vhost": "/",
+      "destination": "Mobile",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {
+        "item1": "mobile",
+        "item2": "mob",
+        "x-match": "any"
+      }
+    },
+    {
+      "source": "Headers-Exchange",
+      "vhost": "/",
+      "destination": "TV",
+      "destination_type": "queue",
+      "routing_key": "",
+      "arguments": {
+        "item1": "tv",
+        "item2": "television",
+        "x-match": "any"
+      }
+    },
+    {
+      "source": "Topic-Exchange",
+      "vhost": "/",
+      "destination": "AC",
+      "destination_type": "queue",
+      "routing_key": "#.ac",
+      "arguments": {}
+    },
+    {
+      "source": "Topic-Exchange",
+      "vhost": "/",
+      "destination": "Mobile",
+      "destination_type": "queue",
+      "routing_key": "*.mobile.*",
+      "arguments": {}
+    },
+    {
+      "source": "Topic-Exchange",
+      "vhost": "/",
+      "destination": "TV",
+      "destination_type": "queue",
+      "routing_key": "*.tv.*",
+      "arguments": {}
+    }
+  ]
+}
