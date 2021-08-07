@@ -8,9 +8,9 @@ import com.example.rabbitmq.model.PersonModel;
 @Service
 public class RabbitMQConsumer {
 
-	@RabbitListener(queues = "Mobile")
-	public void getMessage(/*byte[] message*/ PersonModel p) {
-		System.out.println(p.getName());
-	}
-	
+	// @RabbitListener(queues = "Mobile")
+	// public void getMessage(/*byte[] message*/ PersonModel p) {
+	// System.out.println(p.getName());
+	// }
+
 }
