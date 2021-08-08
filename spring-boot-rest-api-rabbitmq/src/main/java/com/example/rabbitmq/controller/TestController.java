@@ -44,7 +44,8 @@ public class TestController {
 
 		PersonModel person = new PersonModel(1L, name);
 
-		rabbitTemplate.convertAndSend("Mobile", person); // to default exchange
+		 // to default exchange ( if the exchange name is a empty string, the message go to default exchange)
+		rabbitTemplate.convertAndSend("Mobile", person);
 
 		return "Success";
 		
