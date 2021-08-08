@@ -23,23 +23,34 @@ public class TestController {
 	@Autowired
 	RabbitTemplate rabbitTemplate; // usado para publicar as mensagens
 
-	// testing for publish messages in route, direct, fanout and topic exchange
 	/*
-	 * @GetMapping ("/test/{name}") public String testApi(@PathVariable("name")
-	 * String name) {
-	 * 
-	 * PersonModel person = new PersonModel(1L, name);
-	 * 
-	 * // (queue name, serializable object) rabbitTemplate.convertAndSend("Mobile",
-	 * person); // to route rabbitTemplate.convertAndSend("Direct-Exchange", "tv",
-	 * person); // to direct exchange
-	 * rabbitTemplate.convertAndSend("Fanout-Exchange", "", person); // to funout
-	 * exchange rabbitTemplate.convertAndSend("Topic-Exchange", "tv.mobile.ac",
-	 * person); // to topic exchange
-	 * 
-	 * return "Success"; }
+	// testing for publish messages in route, direct, fanout and topic exchange
+	  @GetMapping ("/test/{name}") 
+	  public String testApi(@PathVariable("name") String name) {
+	  
+	  PersonModel person = new PersonModel(1L, name);
+	  
+	  // (queue name, serializable object)
+	  rabbitTemplate.convertAndSend("Direct-Exchange", "tv", person); // to direct exchange
+	  rabbitTemplate.convertAndSend("Fanout-Exchange", "", person); // to funout exchange 
+	  rabbitTemplate.convertAndSend("Topic-Exchange", "tv.mobile.ac", person); // to topic exchange
+	  
+	  return "Success"; }
 	 */
+	
+	// testing for publish messages in default exchange	
+	@GetMapping("/defaultExchange/{name}")
+	public String defaultExchange(@PathVariable("name") String name) {
 
+		PersonModel person = new PersonModel(1L, name);
+
+		rabbitTemplate.convertAndSend("Mobile", person); // to default exchange
+
+		return "Success";
+		
+	}
+	  
+	
 	// testing for publish messages in Headers-Exchange
 	@GetMapping("/test/{name}")
 	public String testApi(@PathVariable("name") String name) throws IOException {
